@@ -1,0 +1,11 @@
+studentService:
+  image: dn271/studentservice:0.10
+  containerPort: 8081
+
+schoolService:
+  image: dn271/demoservice:0.10
+  containerPort: 8080
+
+ingress:
+  enabled: true
+  hostname: myapp.local

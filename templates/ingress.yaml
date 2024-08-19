@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: centralized-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - host: {{ .Values.ingress.hostname }}
+      http:
+        paths:
+          - path: /students
+            pathType: Prefix
+            backend:
+              service:
+                name: student-service
+                port:
+                  number: 80
+          - path: /schools
+            pathType: Prefix
+            backend:
+              service:
+                name: school-service
+                port:
+                  number: 80

@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: school-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: school-service
+  template:
+    metadata:
+      labels:
+        app: school-service
+    spec:
+      containers:
+        - name: school-service
+          image: {{ .Values.schoolService.image }}
+          ports:
+            - containerPort: {{ .Values.schoolService.containerPort }}
